@@ -13,6 +13,10 @@ package org.destiny.beans;
  */
 public interface BeanDefinition {
 
+    /**
+     * 获取 bean 名称
+     * @return
+     */
     String getBeanClassName();
 
 }

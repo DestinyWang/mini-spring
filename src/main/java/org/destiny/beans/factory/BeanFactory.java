@@ -15,12 +15,7 @@ import org.destiny.beans.BeanDefinition;
  */
 public interface BeanFactory {
 
-    /**
-     * 获取 bean 的定义信息
-     * @param beanId
-     * @return
-     */
-    BeanDefinition getBeanDefinition(String beanId);
+
 
     /**
      * 获取 bean 实例

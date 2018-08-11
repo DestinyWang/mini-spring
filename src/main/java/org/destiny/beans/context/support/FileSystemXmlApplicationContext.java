@@ -14,25 +14,20 @@ import org.destiny.core.io.Resource;
  * @version JDK 1.8.0_101
  * @since 2018/8/11 11:18
  */
-public class FileSystemXmlApplicationContext implements ApplicationContext {
+public class FileSystemXmlApplicationContext extends AbstractApplicationContext {
 
-    private DefaultBeanFactory beanFactory;
-
-    public FileSystemXmlApplicationContext(String realPath) {
-        beanFactory = new DefaultBeanFactory();
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
-        Resource resource = new FileSystemResource(realPath);
-        reader.loadBeanDefinitions(resource);
+    public FileSystemXmlApplicationContext(String path) {
+        super(path);
     }
 
     /**
-     * 获取 bean 实例
+     * 根据路径获取资源的抽象方法
      *
-     * @param beanId
+     * @param path
      * @return
      */
     @Override
-    public Object getBean(String beanId) {
-        return beanFactory.getBean(beanId);
+    protected Resource getResourceByPath(String path) {
+        return new FileSystemResource(path);
     }
 }

@@ -3,6 +3,8 @@ package org.destiny.beans.context.support;
 import org.destiny.beans.context.ApplicationContext;
 import org.destiny.beans.factory.support.DefaultBeanFactory;
 import org.destiny.beans.factory.xml.XmlBeanDefinitionReader;
+import org.destiny.core.io.ClassPathResource;
+import org.destiny.core.io.Resource;
 
 /**
  * @author destiny
@@ -12,24 +14,22 @@ import org.destiny.beans.factory.xml.XmlBeanDefinitionReader;
  * @version JDK 1.8.0_101
  * @since 2018/8/11 10:51
  */
-public class ClassPathXmlApplicationContext implements ApplicationContext {
+public class ClassPathXmlApplicationContext extends AbstractApplicationContext {
 
-    private DefaultBeanFactory factory = null;
 
     public ClassPathXmlApplicationContext(String configPath) {
-        factory = new DefaultBeanFactory();
-        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
-        reader.loadBeanDefinitions(configPath);
+        super(configPath);
     }
 
     /**
-     * 获取 bean 实例
+     * 根据路径获取资源的抽象方法
      *
-     * @param beanId
+     * @param path
      * @return
      */
     @Override
-    public Object getBean(String beanId) {
-        return factory.getBean(beanId);
+    protected Resource getResourceByPath(String path) {
+        return new ClassPathResource(path);
     }
+
 }

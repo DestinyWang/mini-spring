@@ -13,4 +13,4 @@
 - branch-ctx: BeanFactory 和 ApplicationContext 的最初设计
 
 # 文档目录
-- [BeanFactory 设计](https://github.com/DestinyWang/minispring/blob/master/doc/bean-factory.md)
+- [BeanFactory 设计](https://github.com/DestinyWang/mini-spring/blob/master/doc/bean-factory.md)

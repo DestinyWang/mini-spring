@@ -1,8 +1,5 @@
 package org.destiny.beans.context.support;
 
-import org.destiny.beans.context.ApplicationContext;
-import org.destiny.beans.factory.support.DefaultBeanFactory;
-import org.destiny.beans.factory.xml.XmlBeanDefinitionReader;
 import org.destiny.core.io.FileSystemResource;
 import org.destiny.core.io.Resource;
 

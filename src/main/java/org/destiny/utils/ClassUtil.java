@@ -35,8 +35,6 @@ public class ClassUtil {
      * @return
      */
     public static ClassLoader getDefaultClassLoader() {
-        logger.info("ContextClassLoader = {}", Thread.currentThread().getContextClassLoader());
-        logger.info("ClassLoader = {}", ClassUtil.class.getClassLoader());
         ClassLoader classLoader = null;
         try {
             classLoader = Thread.currentThread().getContextClassLoader();

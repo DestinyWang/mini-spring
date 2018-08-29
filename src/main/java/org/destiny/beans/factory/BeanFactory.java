@@ -12,7 +12,6 @@ package org.destiny.beans.factory;
  */
 public interface BeanFactory {
 
-
     /**
      * 获取 bean 实例
      * @param beanId

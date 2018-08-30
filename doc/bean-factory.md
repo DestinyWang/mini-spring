@@ -168,3 +168,12 @@ public class DefaultBeanFactory {
     }
 }
 ```
+
+# 2. 将 DefaultBeanFactory 多余职责进行拆分
+目前的 `DefaultBeanFactory` 职责很多
+- 读取 XML
+- 解析 XML
+- 注册 Bean
+- 获取 Bean
+
+这违背了的单一职责原则

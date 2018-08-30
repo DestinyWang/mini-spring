@@ -171,9 +171,26 @@ public class DefaultBeanFactory {
 
 # 2. 将 DefaultBeanFactory 多余职责进行拆分
 目前的 `DefaultBeanFactory` 职责很多
-- 读取 XML
-- 解析 XML
-- 注册 Bean
-- 获取 Bean
+1. 读取 XML, 创建 `BeanDefinition` 对象
+2. 通过反射的方式创建类的实例
+3. 根据 beanId 获取实例对象
 
 这违背了的单一职责原则
+
+    职责: 引起类变化的原因
+    1. 如果有多于一个的动机去改变一个类, 这个类就具有多于一个的原则
+    2. 把多个职责耦合在一起, 一个变化可能会削弱或者抑制这个类完成其他职责的能力
+    
+> 单一职责原则: 对一个类而言, 应该仅有一个引起它变化的原因
+    
+回顾 `DefaultBeanFactory` 的职责, 显然职责 1 并不合适, 因此可以将该职责抽取出来, 单独作为一个接口
+
+于是有了如下设计: 
+
+![](http://oetw0yrii.bkt.clouddn.com/18-8-29/82486082.jpg)
+
+但仍有一个问题: BeanFactory 是由用户去使用的, 将 `registerBeanDefinition()` 这个可以修改框架内部状态的方法暴露给用户并不好;
+
+更进一步, BeanDefinition 是用来通过反射完成对象的创建的, 属于一个内部的概念, 同样也不需要暴露给用户, 同样可以隐藏起来.
+
+![](http://oetw0yrii.bkt.clouddn.com/18-8-30/41491388.jpg)
